@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--&lt;!&ndash;    <bean id="student" class="com.wu.pojo.Student" p:name="武"/>&ndash;&gt;  只赋值了name-->
+
+    <!--    p是无参数构造用的-->
+    <!--    c是有参数构造用的-->
+    <bean id="address" class="com.wu.pojo.Address" p:address="上海"/>
+    <bean id="student" class="com.wu.pojo.Student">
+        <property name="name" value="吴"/>
+        <property name="address" ref="address"/>
+
+        <property name="books">
+            <array>
+                <value>水浒传</value>
+                <value>西游记</value>
+                <value>红楼梦</value>
+                <value>三国演义</value>
+            </array>
+        </property>
+
+        <property name="hobbys">
+            <list>
+                <value>听歌</value>
+                <value>看电影</value>
+                <value>敲代码</value>
+            </list>
+        </property>
+
+        <property name="cards">
+            <map>
+                <entry key="身份证" value="123456"/>
+                <entry key="银行卡" value="12345678"/>
+            </map>
+        </property>
+
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>BOB</value>
+            </set>
+        </property>
+
+        <property name="wife">
+            <!--            <null></null>-->
+            <null/>
+        </property>
+
+        <property name="info">
+            <props>
+                <prop key="password">123456</prop>
+                <prop key="username">root</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
