@@ -13,6 +13,7 @@
         <module name="spring-09-aop" />
         <module name="spring-06-annotation" />
         <module name="spring-07-appconfig" />
+        <module name="spring-11-transaction" />
         <module name="spring-01-ioc1" />
         <module name="spring-02-hello" />
         <module name="spring-05-Autowired" />
@@ -21,7 +22,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring-03-ioc-constructor-1" target="1.5" />
-      <module name="spring-11-transaction" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
