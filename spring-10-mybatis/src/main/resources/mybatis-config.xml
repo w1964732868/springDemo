@@ -8,20 +8,27 @@
         <!--        包/类加别名-->
         <package name="com.wu.pojo"/>
     </typeAliases>
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/>
-            <!--            连接数据库-->
-            <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/mysql?useSSL=false"/>
-                <property name="username" value="root"/>
-                <property name="password" value="wuhuijie"/>
-            </dataSource>
-        </environment>
-    </environments>
+    <!--    设置-->
+    <!--    <settings>-->
+    <!--        <setting name="" value=""/>-->
+    <!--    </settings>-->
+    <!--    可以注释掉 spring-dao.xml里面写了-->
+    <!--        <environments default="development">-->
+    <!--            <environment id="development">-->
+    <!--                <transactionManager type="JDBC"/>-->
+    <!--                &lt;!&ndash;            连接数据库&ndash;&gt;-->
+    <!--                <dataSource type="POOLED">-->
+    <!--                    <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
+    <!--                    <property name="url" value="jdbc:mysql://localhost:3306/mysql?useSSL=false"/>-->
+    <!--                    <property name="username" value="root"/>-->
+    <!--                    <property name="password" value="wuhuijie"/>-->
+    <!--                </dataSource>-->
+    <!--            </environment>-->
+    <!--        </environments>-->
+    <!--   spring-dao.xml里有  <property name="mapperLocations" value="classpath:com/wu/mapper/*.xml"/>-->
+    <!--    可以注释掉了-->
     <!-- 注册   绑定-->
-    <mappers>
-        <mapper class="com.wu.mapper.UserMapper"/>
-    </mappers>
+    <!--        <mappers>-->
+    <!--            <mapper class="com.wu.mapper.UserMapper"/>-->
+    <!--        </mappers>-->
 </configuration>

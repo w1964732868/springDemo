@@ -21,6 +21,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring-03-ioc-constructor-1" target="1.5" />
+      <module name="spring-11-transaction" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

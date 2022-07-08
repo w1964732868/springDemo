@@ -5,10 +5,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+//Mybatis-plus  通用mapper
 
 /**
  * @author huijie.wu
@@ -21,7 +24,7 @@ public class MyTest {
     @Test
     public void test() throws IOException {
         //加载配置文件
-        String resources = "mybatis-config.xml";
+        String resources = "mybatis-config.xml";// environments|mappers注释掉了 会报错
         InputStream in = Resources.getResourceAsStream(resources);
         //读
         SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(in);
@@ -35,4 +38,33 @@ public class MyTest {
 
 
     }
+
+
+    @Test
+    public void testSpringDao() throws IOException {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring-dao.xml");// bean id="userMapper"注释掉了 会报错
+        UserMapper userMapper = context.getBean("userMapper", UserMapper.class);
+        for (User user : userMapper.selectUser()) {
+            System.out.println(user);//User(id=1, name=小明, pwd=123)
+        }
+    }
+
+    @Test
+    public void testApplicationContext() throws IOException {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserMapper userMapper = context.getBean("userMapper", UserMapper.class);
+        for (User user : userMapper.selectUser()) {
+            System.out.println(user);//User(id=1, name=小明, pwd=123)
+        }
+    }
+
+    @Test
+    public void test2() throws IOException {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserMapper userMapper = context.getBean("userMapper2", UserMapper.class);
+        for (User user : userMapper.selectUser()) {
+            System.out.println(user);//User(id=1, name=小明, pwd=123)
+        }
+    }
+
 }
