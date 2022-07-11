@@ -29,8 +29,8 @@ import javax.annotation.Resource;
 
 @Data
 public class Person {
-    //按类型装配（默认使用的装配方式）。        byType
-    //按名称装配（结合@Qualifier注解使用）。   byName
+    //按类型装配（默认使用的装配方式）。        byType class唯一
+    //按名称装配（结合@Qualifier注解使用）。   byName id唯一
 
     //自动注解
     @Autowired//byType class
@@ -38,7 +38,8 @@ public class Person {
 
     @Autowired//组合byName id
     @Qualifier(value = "dog")
-    //@Resource  //既没指定name，也没指定type，自动按照名称装配 byName(id)  name：指定需注入的bean的名称(id) type： 指定需注入的bean的类型(class)
+    //@Resource 先name 后type   id名字唯一 class全局唯一
+    // 既没指定name，也没指定type，自动按照名称装配 byName(id)  name：指定需注入的bean的名称(id) type： 指定需注入的bean的类型(class)
     private Dog dog;
 
     private String name;

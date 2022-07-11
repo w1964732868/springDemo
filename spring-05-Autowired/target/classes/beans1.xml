@@ -12,7 +12,7 @@
 
     <context:annotation-config/>
 
-    <bean id="cat1" class="com.wu.pojo.Cat"/>
+    <bean id="cat" class="com.wu.pojo.Cat"/>
     <bean id="dog" class="com.wu.pojo.Dog"/>
 
     <bean id="person" class="com.wu.pojo.Person"/>
