@@ -13,6 +13,13 @@ import javax.annotation.Resource;
  * @description
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
+
+/**
+ * spring三种装配方式
+ * 在xml中显示的装配
+ * 在java中显示的装配
+ * 隐士的自动装配bean 重要Autowired
+ */
 //导入约束 xmlns:context="http://www.springframework.org/schema/context"
 //配置注解的支持 <context:annotation-config/>
 

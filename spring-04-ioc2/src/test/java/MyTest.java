@@ -7,7 +7,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author huijie.wu
  * @version 1.0.0
  * @date 2022/6/27
- * @description
+ * @description 依赖注入  1构造器注入  2set注入  3拓展注入 p注入/c注入
+ * p是无参数构造用的
+ * c是有参数构造用的
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
 public class MyTest {

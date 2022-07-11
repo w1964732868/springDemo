@@ -20,11 +20,11 @@ public class User {
 
     public User(String name) {
         this.name = name;
-
+        System.out.println("User有参构造");
     }
 
     public void show() {
-        System.out.println("User的show方法");
+        System.out.println("name = " + name);
 
     }
 }

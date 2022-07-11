@@ -10,9 +10,11 @@
     <!--    c是有参数构造用的-->
     <bean id="address" class="com.wu.pojo.Address" p:address="上海"/>
     <bean id="student" class="com.wu.pojo.Student">
+        <!--        普通注入-->
         <property name="name" value="吴"/>
+        <!--        Bean注入-->
         <property name="address" ref="address"/>
-
+        <!--        数组注入-->
         <property name="books">
             <array>
                 <value>水浒传</value>
@@ -21,7 +23,7 @@
                 <value>三国演义</value>
             </array>
         </property>
-
+        <!--        list-->
         <property name="hobbys">
             <list>
                 <value>听歌</value>
@@ -30,6 +32,7 @@
             </list>
         </property>
 
+        <!--        map-->
         <property name="cards">
             <map>
                 <entry key="身份证" value="123456"/>
@@ -37,6 +40,7 @@
             </map>
         </property>
 
+        <!--        set-->
         <property name="games">
             <set>
                 <value>LOL</value>
@@ -44,11 +48,13 @@
             </set>
         </property>
 
+        <!--        空-->
         <property name="wife">
             <!--            <null></null>-->
             <null/>
         </property>
 
+        <!--        Properties-->
         <property name="info">
             <props>
                 <prop key="password">123456</prop>

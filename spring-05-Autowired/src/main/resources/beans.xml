@@ -7,12 +7,13 @@
     <bean id="dog" class="com.wu.pojo.Dog"/>
     <!--    自动装配
     byName 会自动在容器上下文中查找，和自己对象 set方法后面的值对应的bean id 名字唯一 id唯一
-    cat、dog
+    cat、dog 成功
         <bean id="cat" class="com.wu.pojo.Cat"/>
         <bean id="dog" class="com.wu.pojo.Dog"/>
 
+
     byType 会自动在容器上下文中查找，和自己对象 属性类型相同的bean id      类型全局唯一  id可以省略  class唯一
-    cat、dog111
+    cat、dog111 成功
         <bean id="cat" class="com.wu.pojo.Cat"/>
         <bean id="dog111" class="com.wu.pojo.Dog"/>
     -->
