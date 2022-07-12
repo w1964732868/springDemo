@@ -1,5 +1,6 @@
 package com.wu.demo2;
 
+//抽象角色
 public interface UserService {
     public void add();
 

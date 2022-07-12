@@ -27,12 +27,15 @@ public class AnnotationPointCut {
         System.out.println("Annotation方法执行后");
     }
 
+    //在环绕增强中 可以给定一个参数 代表要获取处理切入的点
     @Around("execution(* com.wu.pojo.UserServiceImpl.*(..))")
     public void aroud(ProceedingJoinPoint jp) {
         System.out.println("Annotation环绕前");
         try {
+            //签名
             Signature signature = jp.getSignature();
             System.out.println("signature:" + signature);
+            //执行方法
             Object proceed = jp.proceed();
             System.out.println("proceed:" + proceed);
         } catch (Throwable throwable) {

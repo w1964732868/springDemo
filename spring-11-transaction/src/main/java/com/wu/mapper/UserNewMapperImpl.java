@@ -17,9 +17,10 @@ public class UserNewMapperImpl extends SqlSessionDaoSupport implements UserNewMa
 
     public List<User> selectUserNew() {
         UserNewMapper mapper = getSqlSession().getMapper(UserNewMapper.class);
-        User user = new User(2, "小王", "12");
+        //变为一组事务
+        User user = new User(3, "小王", "12");
         mapper.addUser(user);
-        User user3 = new User(3, "小王", "12");
+        User user3 = new User(4, "小王", "12");
         mapper.addUser(user3);
         mapper.deleteUser(3);
 

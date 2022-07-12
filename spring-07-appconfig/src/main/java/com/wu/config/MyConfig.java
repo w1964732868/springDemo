@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Import;
 public class MyConfig {
 
     @Bean//类似于bean  getUser类似于id  返回值类似于class
-    public User getUser(){
-        return new User();
+    public User getUser() {
+        return new User();//要注入到bean里的对象
     }
 }

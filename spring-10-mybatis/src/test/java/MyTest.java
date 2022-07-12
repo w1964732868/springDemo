@@ -51,6 +51,7 @@ public class MyTest {
 
     @Test
     public void testApplicationContext() throws IOException {
+        //SqlSessionTemplate  sqlSession
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserMapper userMapper = context.getBean("userMapper", UserMapper.class);
         for (User user : userMapper.selectUser()) {
@@ -60,6 +61,7 @@ public class MyTest {
 
     @Test
     public void test2() throws IOException {
+        // //getSqlSession() SqlSessionDaoSupport里面写的  sqlSessionFactory
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserMapper userMapper = context.getBean("userMapper2", UserMapper.class);
         for (User user : userMapper.selectUser()) {

@@ -17,7 +17,7 @@ public class Client {
 
         //代理角色
         ProxyInvocationHandler handler = new ProxyInvocationHandler();
-        handler.setTarget(userService);
+        handler.setTarget(userService);//设置要代理的对象
         //动态生成代理类
         UserService proxy = (UserService) handler.getProxy();
         proxy.add();

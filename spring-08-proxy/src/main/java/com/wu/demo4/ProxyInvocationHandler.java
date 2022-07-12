@@ -12,7 +12,7 @@ import java.lang.reflect.Proxy;
  * @description
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
-//会用这个类 自动生成代理类
+//会用这个类 自动生成代理类  通用代理类
 public class ProxyInvocationHandler implements InvocationHandler {
 
     //被代理的接口

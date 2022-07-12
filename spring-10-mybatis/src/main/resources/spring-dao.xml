@@ -12,12 +12,13 @@
         <property name="username" value="root"/>
         <property name="password" value="wuhuijie"/>
     </bean>
-    <!-- sqlSessionFactory-->
+    <!-- 重要 sqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!--绑定mybatis配置文件-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <property name="mapperLocations" value="classpath:com/wu/mapper/*.xml"/>
+        <!--        <property name="mapperLocations" value="classpath:com/wu/mapper/*.xml"/>-->
+        <property name="mapperLocations" value="classpath:com/wu/mapper/UserMapper.xml"/>
     </bean>
 
     <!--    重要 SqlSessionTemplate-->
@@ -26,8 +27,8 @@
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
 
-<!--    testSpringDao 需要这个-->
-<!--    <bean id="userMapper" class="com.wu.mapper.UserMapperImpl">-->
-<!--        <property name="sqlSession" ref="sqlSession"/>-->
-<!--    </bean>-->
+    <!--    testSpringDao 需要这个-->
+    <!--    <bean id="userMapper" class="com.wu.mapper.UserMapperImpl">-->
+    <!--        <property name="sqlSession" ref="sqlSession"/>-->
+    <!--    </bean>-->
 </beans>

@@ -24,6 +24,7 @@
         <property name="mapperLocations" value="classpath:com/wu/mapper/*.xml"/>
     </bean>
 
+    <!--重要 SqlSessionTemplate-->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <!-- 只能使用构造器注入  因为没有set方法-->
         <constructor-arg index="0" ref="sqlSessionFactory"/>
@@ -34,7 +35,7 @@
         <constructor-arg ref="dataSource"/>
         <!--        <property name="dataSource" ref="dataSource"/>-->
     </bean>
-    <!--    结合AOP实现事务的植入-->
+    <!--    结合AOP实现事务的织入-->
     <!--    配置事务通知-->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <!--        给那些方法配置事务-->
@@ -45,11 +46,12 @@
             <tx:method name="delete" propagation="REQUIRED"/>
             <tx:method name="update" propagation="REQUIRED"/>
             <tx:method name="query" read-only="true"/>
+<!--            给所有方法配置事务-->
             <tx:method name="*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
 
-    <!--    配置事务切入-->
+    <!--    配置事务切入  横切-->
     <aop:config>
         <aop:pointcut id="txPointCut" expression="execution(* com.wu.mapper.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>

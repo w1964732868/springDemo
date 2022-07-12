@@ -24,5 +24,6 @@ public class User {
     //<property name="name" value="潇潇"/>
     //</bean>
     public String name;//潇潇
+    //public String name = "潇潇";
 }
 

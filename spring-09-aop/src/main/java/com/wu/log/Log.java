@@ -11,9 +11,10 @@ import java.lang.reflect.Method;
  * @description
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
+//spring API接口
 public class Log implements MethodBeforeAdvice {
 
-    //目标对象的方法 参数 目标接口
+    //要执行的目标对象的方法 参数 目标接口/对象
 
     public void before(Method method, Object[] objects, Object o) throws Throwable {
         System.out.println(o.getClass().getName() + "的" + method.getName() + "被执行了");

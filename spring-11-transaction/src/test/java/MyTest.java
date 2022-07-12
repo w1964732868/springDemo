@@ -27,7 +27,10 @@ public class MyTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserNewMapper userNewMapper = context.getBean("userNewMapper", UserNewMapper.class);
         for (User user : userNewMapper.selectUserNew()) {
-            System.out.println(user);//User(id=1, name=小明, pwd=123)
+            System.out.println(user);
+            //User(id=1, name=小明, pwd=123)
+            //User(id=2, name=小王, pwd=12)
+            //User(id=4, name=小王, pwd=12)
         }
     }
 }

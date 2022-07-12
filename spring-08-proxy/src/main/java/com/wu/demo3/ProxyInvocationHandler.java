@@ -9,7 +9,7 @@ import java.lang.reflect.Proxy;
  * @author huijie.wu
  * @version 1.0.0
  * @date 2022/7/7
- * @description
+ * @description java.lang.reflect 需要了解两个类 Proxy/InvocationHandler
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
 //会用这个类 自动生成代理类
@@ -22,17 +22,19 @@ public class ProxyInvocationHandler implements InvocationHandler {
         this.rent = rent;
     }
 
-    //生成得到代理类  固定代码
+    //生成得到代理类  固定代码 只改rent
+    //获取反射对象的加载, 代理类的接口, InvocationHandler()这块它本身
     public Object getProxy() {
         return Proxy.newProxyInstance(this.getClass().getClassLoader(),
                 rent.getClass().getInterfaces(),
                 this);
     }
 
-    //处理代理实例 并返回结果
+    //处理代理实例 并返回结果  真正执行
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         seeHouse();
         //动态代理的本质 是反射机制实现
+        //执行接口上的方法
         Object result = method.invoke(rent, args);
         fare();
         //中介带你看房

@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor//有参构造
+@NoArgsConstructor//无参构造
 public class User {
     private int id;
     private String name;

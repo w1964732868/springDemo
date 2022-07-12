@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
  **/
 public class AfterLog implements AfterReturningAdvice {
 
+    //返回值 要执行的目标对象的方法 参数 目标接口/对象
     public void afterReturning(Object o, Method method, Object[] objects, Object o1) throws Throwable {
         System.out.println("执行了" + method.getName() + "方法, 返回结果为" + o);
     }
