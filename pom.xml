@@ -20,8 +20,10 @@
         <module>spring-09-aop</module>
         <module>spring-10-mybatis</module>
         <module>spring-11-transaction</module>
+        <module>mybatis-01</module>
     </modules>
     <dependencies>
+        <!--        为了spring模块用-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -39,5 +41,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+
 
 </project>
