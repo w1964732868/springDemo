@@ -11,6 +11,8 @@
         <!--
         ref是引用spring容器中创建好的对象
         value是具体的值 基本类型
+
+        ref可以换成 mysqlImpl/oracleImpl
         -->
         <property name="userDao" ref="impl"/>
     </bean>

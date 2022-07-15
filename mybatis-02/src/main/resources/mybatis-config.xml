@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--        configuration核心配置文件-->
+<configuration>
+    <properties resource="db.properties">
+        <property name="username" value="root"/>
+        <!--        db.properties文件里面的配置优先-->
+        <!--        这里面密码是错误的-->
+        <property name="password" value="111"/>
+    </properties>
+
+    <!--    别名-->
+    <typeAliases>
+        <!--        User-->
+        <!--        <typeAlias type="com.wu.pojo.User" alias="User"/>-->
+        <!--        user-->
+        <package name="com.wu.pojo"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--    每一个Mapper.xml都需要在Mybatis核心配置文件中注册
+    / 路径 接口和mapper名字位置没有要求
+    . class 接口和mapper名字一样 位置在同一个包下-->
+    <mappers>
+        <mapper resource="com/wu/mapper/MyBatisUserMapper.xml"/>
+    </mappers>
+</configuration>

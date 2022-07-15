@@ -21,6 +21,7 @@
         <module>spring-10-mybatis</module>
         <module>spring-11-transaction</module>
         <module>mybatis-01</module>
+        <module>mybatis-02</module>
     </modules>
     <dependencies>
         <!--        为了spring模块用-->

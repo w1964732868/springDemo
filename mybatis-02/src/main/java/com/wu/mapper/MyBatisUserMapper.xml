@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wu.mapper.MyBatisUserMapper">
+    <!--    column数据库对应字段名  property实体类对应字段名-->
+    <resultMap id="MyTestBean" type="user">
+        <result column="pwd" property="password"/>
+    </resultMap>
+
+    <select id="getUserList" resultType="user">
+        select * from mysql.user;
+    </select>
+
+    <select id="getUserById" resultMap="MyTestBean">
+        select * from mysql.user alias where alias.id = #{map.id};
+    </select>
+    <!--    <select id="getUserById" resultType="user">-->
+    <!--        select id,name,pwd as password from mysql.user alias where alias.id = #{id};-->
+    <!--    </select>-->
+    <select id="getUserById1" resultMap="MyTestBean">
+        select * from mysql.user alias where alias.id = #{id};
+    </select>
+</mapper>
