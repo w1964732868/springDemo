@@ -21,7 +21,7 @@ public class MyTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         MyBatisUserMapper mapper = sqlSession.getMapper(MyBatisUserMapper.class);
         for (User user : mapper.getUserList()) {
-            System.out.println(user);
+            System.out.println(user);//User(id=1, name=哈哈, password=null)
         }
 
         //关闭
@@ -40,6 +40,8 @@ public class MyTest {
 
         User user1 = mapper.getUserById1(1);
         System.out.println(user1);
+        //User(id=1, name=哈哈, password=111)
+        //User(id=1, name=哈哈, password=111)
         //关闭
         sqlSession.close();
     }
