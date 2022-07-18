@@ -2,6 +2,7 @@ import com.wu.mapper.MyBatisUserMapper;
 import com.wu.pojo.User;
 import com.wu.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -15,6 +16,9 @@ import java.util.Map;
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
 public class MyTest {
+    //org.apache.log4j.Logger导包
+    static Logger logger = Logger.getLogger(MyTest.class);
+
     @Test
     public void getUserList() {
         //获取sqlSession对象
@@ -44,6 +48,14 @@ public class MyTest {
         //User(id=1, name=哈哈, password=111)
         //关闭
         sqlSession.close();
+    }
+
+    @Test
+    public void testLog4J() {
+        //日志级别
+        logger.info("info进入");
+        logger.debug("debug进入");
+        logger.error("error进入");
     }
 
 }

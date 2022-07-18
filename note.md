@@ -18,3 +18,5 @@ Ioc:对象由Spring 来创建 , 管理 , 装配 !
 - @Controller：web层
 - @Service：service层
 - @Repository：dao层
+
+- logImpl SLF4J | LOG4J（3.5.9 起废弃） | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING

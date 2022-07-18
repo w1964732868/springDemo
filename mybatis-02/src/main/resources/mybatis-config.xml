@@ -10,7 +10,13 @@
         <!--        这里面密码是错误的-->
         <property name="password" value="111"/>
     </properties>
-
+    <!--logImpl  ： SLF4J | LOG4J【掌握】（3.5.9 起废弃） | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING 标准【掌握】 | NO_LOGGING-->
+    <!--STDOUT_LOGGING标准-->
+    <settings>
+        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
+        <!--LOG4J ClassNotFoundException 没有导包-->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
     <!--    别名-->
     <typeAliases>
         <!--        User-->
