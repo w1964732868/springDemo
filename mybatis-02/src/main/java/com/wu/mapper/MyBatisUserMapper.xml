@@ -21,4 +21,9 @@
     <select id="getUserById1" resultMap="MyTestBean">
         select * from mysql.user alias where alias.id = #{id};
     </select>
+
+    <select id="getUserListLimit" resultMap="MyTestBean">
+        select * from mysql.user limit #{map.startIndex},#{map.pageSize};
+    </select>
+
 </mapper>
