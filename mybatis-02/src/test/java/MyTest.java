@@ -27,7 +27,11 @@ public class MyTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         MyBatisUserMapper mapper = sqlSession.getMapper(MyBatisUserMapper.class);
         for (User user : mapper.getUserList()) {
-            System.out.println(user);//User(id=1, name=哈哈, password=null)
+            System.out.println(user);
+            //User(id=1, name=哈哈, password=null)
+            //User(id=2, name=hehe, password=null)
+            //User(id=3, name=keke, password=null)
+            //User(id=4, name=hh, password=null)
         }
 
         //关闭
@@ -66,7 +70,7 @@ public class MyTest {
         MyBatisUserMapper mapper = sqlSession.getMapper(MyBatisUserMapper.class);
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("startIndex", 1);
-        map.put("pageSize", 2);
+        map.put("pageSize", 2);//2,3
         List<User> userList = mapper.getUserListLimit(map);
         for (User user : userList) {
             System.out.println(user);
@@ -77,10 +81,41 @@ public class MyTest {
         sqlSession.close();
     }
 
+    //rowBounds分页
+    @Test
+    public void getUserRowBounds() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        RowBounds rowBounds = new RowBounds(2, 2);//3,4
+        List<User> selectList = sqlSession.selectList("com.wu.mapper.MyBatisUserMapper.getUserRowBounds", "", rowBounds);
+        for (User user : selectList) {
+            System.out.println(user);
+            //User(id=3, name=keke, password=2)
+            //User(id=4, name=hh, password=3)
+        }
+
+        sqlSession.close();
+    }
 
     //注解
     @Test
-    public void getUserLimit() {
+    public void getUserLimit2() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        MyBatisUserMapper mapper = sqlSession.getMapper(MyBatisUserMapper.class);
+        List<User> userLimit = mapper.getUserLimit();
+        for (User user : userLimit) {
+            System.out.println(user);
+            //User(id=1, name=哈哈, password=111)
+            //User(id=2, name=hehe, password=1)
+            //User(id=3, name=keke, password=2)
+            //User(id=4, name=hh, password=3)
+        }
+
+        sqlSession.close();
+    }
+
+    //注解+limit分页
+    @Test
+    public void getUserLimitRowBounds() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         RowBounds rowBounds = new RowBounds(0, 2);//1 2
         List<User> selectList = sqlSession.selectList("com.wu.mapper.MyBatisUserMapper.getUserLimit", "", rowBounds);
@@ -101,5 +136,9 @@ public class MyTest {
         logger.error("error进入");
     }
 
+    //mybatis执行流程刨析
+    //Resources获取加载全局的配置文件->实例化SqlSessionFactoryBuilder构造器->build  解析配置文件 流XMLConfigBuilder->Configuration所有配置信息->sqlSessionFactory实例化->transational事务管理->创建 executor 执行器->创建sqlSession执行mapper->实现CRUD->查快是否执行成功->关闭事务
+    //实现CRUD->transational事务管理
+    //查快是否执行成功->transational事务管理
 }
 

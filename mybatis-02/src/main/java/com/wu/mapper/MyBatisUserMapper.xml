@@ -26,4 +26,8 @@
         select * from mysql.user limit #{map.startIndex},#{map.pageSize};
     </select>
 
+    <select id="getUserRowBounds" resultMap="MyTestBean">
+        select * from mysql.user;
+    </select>
+
 </mapper>

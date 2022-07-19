@@ -16,7 +16,9 @@ public interface MyBatisUserMapper {
 
     List<User> getUserListLimit(@Param("map") Map<String, Integer> map);
 
+    List<User> getUserRowBounds();
+
     @Select("select id,name,pwd as password from mysql.user")
-    User getUserLimit();
+    List<User> getUserLimit();
 
 }
