@@ -1,9 +1,13 @@
+import com.wu.dao.StudentMapper;
 import com.wu.dao.TeacherMapper;
+import com.wu.pojo.Student;
 import com.wu.pojo.Teacher;
 import com.wu.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+
+import java.util.List;
 
 
 /**
@@ -22,7 +26,7 @@ public class MyTest {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
         Teacher teacher = mapper.getTeacher(1);
-        logger.info(teacher);//Teacher(id=1, name=老师)
+        logger.info(teacher);//Teacher(id=1, name=秦老师)
 
         sqlSession.close();
     }
@@ -53,4 +57,23 @@ public class MyTest {
 
         sqlSession.close();
     }
+
+    @Test
+    public void getStudent() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        List<Student> teachers = mapper.getStudent();
+        for (Student teacher : teachers) {
+            logger.info(teacher);
+            //[MyTest]-Student(id=1, name=小明, teacher=Teacher(id=1, name=秦老师))
+            //[MyTest]-Student(id=2, name=小红, teacher=Teacher(id=1, name=秦老师))
+            //[MyTest]-Student(id=3, name=小张, teacher=Teacher(id=1, name=秦老师))
+            //[MyTest]-Student(id=4, name=小李, teacher=Teacher(id=1, name=秦老师))
+            //[MyTest]-Student(id=5, name=小王, teacher=Teacher(id=1, name=秦老师))
+        }
+        sqlSession.close();
+    }
+
+    //java.lang.IllegalArgumentException: Result Maps collection does not contain value for
+    //.xml文件中 将resultType 和resultMap 混淆
 }

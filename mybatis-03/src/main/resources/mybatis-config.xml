@@ -11,6 +11,10 @@
         <setting name="logImpl" value="LOG4J"/>
     </settings>
 
+    <typeAliases>
+        <package name="com.wu.pojo"/>
+    </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -25,8 +29,9 @@
 
 
     <mappers>
-        <mapper class="com.wu.dao.TeacherMapper"/>
-        <mapper class="com.wu.dao.StudentMapper"/>
+        <mapper resource="com/wu/dao/TeacherMapper.xml"/>
+        <mapper resource="com/wu/dao/StudentMapper.xml"/>
+<!--        <mapper resource="com/wu/dao/StudentMapper.xml"/>-->
     </mappers>
 
 </configuration>
