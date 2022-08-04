@@ -21,6 +21,7 @@ public class MyTest {
 
     static Logger logger = Logger.getLogger(MyTest.class);
 
+    //注解开发Select
     @Test
     public void test() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
@@ -31,6 +32,7 @@ public class MyTest {
         sqlSession.close();
     }
 
+    //注解开发Insert
     @Test
     public void addTest() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
@@ -40,6 +42,7 @@ public class MyTest {
         sqlSession.close();
     }
 
+    //注解开发Update
     @Test
     public void updateTest() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
@@ -49,6 +52,7 @@ public class MyTest {
         sqlSession.close();
     }
 
+    //注解开发Delete
     @Test
     public void deleteTest() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
@@ -58,6 +62,7 @@ public class MyTest {
         sqlSession.close();
     }
 
+    //多对一 查询嵌套
     @Test
     public void getStudent() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
@@ -70,6 +75,23 @@ public class MyTest {
             //[MyTest]-Student(id=3, name=小张, teacher=Teacher(id=1, name=秦老师))
             //[MyTest]-Student(id=4, name=小李, teacher=Teacher(id=1, name=秦老师))
             //[MyTest]-Student(id=5, name=小王, teacher=Teacher(id=1, name=秦老师))
+        }
+        sqlSession.close();
+    }
+
+    //多对一  结果嵌套
+    @Test
+    public void getStudent2() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        List<Student> teachers = mapper.getStudents2();
+        for (Student teacher : teachers) {
+            logger.info(teacher);
+            //[MyTest]-Student(id=1, name=小明, teacher=Teacher(id=0, name=秦老师))
+            //[MyTest]-Student(id=2, name=小红, teacher=Teacher(id=0, name=秦老师))
+            //[MyTest]-Student(id=3, name=小张, teacher=Teacher(id=0, name=秦老师))
+            //[MyTest]-Student(id=4, name=小李, teacher=Teacher(id=0, name=秦老师))
+            //[MyTest]-Student(id=5, name=小王, teacher=Teacher(id=0, name=秦老师))
         }
         sqlSession.close();
     }

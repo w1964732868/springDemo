@@ -21,6 +21,7 @@ public class MyTest {
     //org.apache.log4j.Logger导包
     static Logger logger = Logger.getLogger(MyTest.class);
 
+    //获取所有
     @Test
     public void getUserList() {
         //获取sqlSession对象
@@ -38,16 +39,20 @@ public class MyTest {
         sqlSession.close();
     }
 
+    //万能map
+    //普通参数
     @Test
     public void getUserById() {
         //获取sqlSession对象
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         MyBatisUserMapper mapper = sqlSession.getMapper(MyBatisUserMapper.class);
+        //万能map
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("id", 1);
         User user = mapper.getUserById(map);
         System.out.println(user);
 
+        //普通参数
         User user1 = mapper.getUserById1(1);
         System.out.println(user1);
         //User(id=1, name=哈哈, password=111)

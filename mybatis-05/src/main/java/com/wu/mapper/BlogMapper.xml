@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wu.mapper.BlogMapper">
+
+    <sql id="sqlBean">
+        <if test="map.title != null">
+            title = #{map.title}
+        </if>
+        <if test="map.author != null">
+            and author = #{map.author}
+        </if>
+    </sql>
+
+    <insert id="addBlog" parameterType="blog" keyProperty="userId" useGeneratedKeys="true">
+        insert into mysql.blog (id, title, author, create_time, views)
+        values (#{model.id},#{model.title},#{model.author},#{model.createTime},#{model.views});
+    </insert>
+
+    <select id="queryBlogIf" parameterType="map" resultType="blog">
+        select * from mysql.blog
+        <where>
+            <include refid="sqlBean"></include>
+        </where>
+    </select>
+
+    <update id="updateBlog" parameterType="blog">
+        update mysql.blog
+        <set>
+            <if test="map.title != null">
+                title = #{map.title},
+            </if>
+            <if test="map.author != null">
+                author = #{map.author}
+            </if>
+        </set>
+        where id = #{map.id};
+    </update>
+
+</mapper>

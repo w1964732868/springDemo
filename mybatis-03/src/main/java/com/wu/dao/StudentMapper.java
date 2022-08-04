@@ -12,6 +12,10 @@ import java.util.List;
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
 public interface StudentMapper {
+
+    //获取所有学生对应的老师信息
     List<Student> getStudent();
-    public List<Student> getStudents2();
+
+    List<Student> getStudents2();
+
 }

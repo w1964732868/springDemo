@@ -1,6 +1,10 @@
 package com.wu.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * @author huijie.wu
@@ -9,10 +13,12 @@ import lombok.Data;
  * @description
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
-@Data//无参构造 set get toString equals hashCode
-public class Student {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Teacher {
     private int id;
     private String name;
-    //多个学生可以是同一个老师  多对一
-    private Teacher teacher;
+    //一个老师对应多个学生 一对多
+    List<Student> students;
 }

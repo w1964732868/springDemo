@@ -3,15 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wu.dao.StudentMapper">
+    <!--=============================查询嵌套===============================================================-->
     <resultMap id="StudentTeacher" type="student">
         <!--        student-->
         <result property="id" column="id"/>
         <result property="name" column="name"/>
-        <!--        对象association-->
-        <!--        集合 collection-->
+        <!--        对象association  javaType -->
+        <!--        集合 collection ofType -->
         <association property="teacher" column="tid" javaType="teacher" select="getTeacher1"/>
     </resultMap>
 
+    <!--   获取所有学生 对应的老师信息-->
     <select id="getStudent" resultMap="StudentTeacher">
        select * from student
     </select>
@@ -20,16 +22,20 @@
        select * from teacher where id = #{id}
     </select>
 
+    <!--=============================结果嵌套===============================================================-->
     <select id="getStudents2" resultMap="StudentTeacher2">
         select s.id sid, s.name sname , t.name tname
         from student s,teacher t
         where s.tid = t.id
     </select>
-    <resultMap id="StudentTeacher2" type="Student">
+
+    <resultMap id="StudentTeacher2" type="student">
+        <!--    column数据库对应字段名  property实体类对应字段名-->
         <id property="id" column="sid"/>
         <result property="name" column="sname"/>
         <!--关联对象property 关联对象在Student实体类中的属性-->
-        <association property="teacher" javaType="Teacher">
+        <!--JavaType是用来指定pojo中属性的类型-->
+        <association property="teacher" javaType="teacher">
             <result property="name" column="tname"/>
         </association>
     </resultMap>
