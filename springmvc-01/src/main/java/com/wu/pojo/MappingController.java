@@ -88,4 +88,19 @@ public class MappingController {
         return "hello";
     }
 
+
+    //http://localhost:8081/form.jsp  输入：购物券
+    //http://localhost:8081/testPostResFul 购物券
+
+
+    //过滤器 解决乱码
+    //http://localhost:8081/form.jsp  输入：购物券
+    //name:è???????? 出现乱码
+    @PostMapping(value = "/testPostResFul")
+    public String testPostResFul(String name, Model model) {
+        System.out.println("name:" + name);
+        model.addAttribute("msg", name);
+        return "hello";
+    }
+
 }
