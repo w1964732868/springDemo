@@ -37,6 +37,7 @@ public class MappingController {
         return "hello";
     }
 
+    //配置了 ViewResolver视图解析器
     //简洁 高效 安全
     @PostMapping("/addRequestResFul/{a}/{b}")
     public String addRequestResFulPost(@PathVariable int a, @PathVariable int b, Model model) {
@@ -48,4 +49,43 @@ public class MappingController {
         model.addAttribute("msg", "结果为" + res);
         return "hello";
     }
+
+    //没有配置 ViewResolver视图解析器  全地址
+    //转发 跳转 默认
+    @GetMapping("/testForwardResFul/{a}/{b}")
+    public String testForwardRequestResFul(@PathVariable int a, @PathVariable int b, Model model) {
+        int res = a + b;
+        model.addAttribute("msg", "结果为" + res);
+        return "forward:/WEB-INF/jsp/hello.jsp";// forward 页面真正的位置
+    }
+
+    //重定向
+    @GetMapping("/testRedirestResFul/{a}/{b}")
+    public String testRedirestRequestResFul(@PathVariable int a, @PathVariable int b, Model model) {
+        int res = a + b;
+        //http://localhost:8081/testRedirestResFul/1/2
+        //重定向到下面连接
+        //http://localhost:8081/index.jsp?msg=testRedirestRequestResFul
+        model.addAttribute("msg", "testRedirestRequestResFul");
+        return "redirect:/index.jsp";// redirect
+    }
+
+    //http://localhost:8081/testResFul?username=wu
+    @GetMapping("/testResFul")
+    public String testResFul(@RequestParam("username") String name) {
+        System.out.println("name:" + name);//name:wu
+        return "hello";
+    }
+
+    @GetMapping("/testGetResFul")
+    public String testGetResFul(User user) {
+        System.out.println("user:" + user);
+        //http://localhost:8081/testGetResFul?id=1&username=wu&age=3
+        //user:User(id=1, name=null, age=3)
+
+        //http://localhost:8081/testGetResFul?id=1&name=wu&age=3
+        //user:User(id=1, name=wu, age=3)
+        return "hello";
+    }
+
 }
