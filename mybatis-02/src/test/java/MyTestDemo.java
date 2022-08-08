@@ -72,4 +72,46 @@ public class MyTestDemo {
         }
     }
 
+
+    @Test
+    public void testContains() {
+        String vasCode = "";
+        String fangweikou = "";
+        List<String> objects = new ArrayList<String>();
+        objects.add("T恤");
+        objects.add("女装");
+        objects.add("服饰");
+        objects.add("男装");
+
+        String str = "男装>T恤";//
+        for (String object : objects) {
+            if (str.contains(object)) {
+                System.out.println("包含: " + object);
+                fangweikou = "fangweikou";
+                if (vasCode == null || vasCode == "" || "".equals(str)) {
+                    vasCode = fangweikou;
+                } else {
+                    vasCode = vasCode + "," + fangweikou;
+                }
+                break;
+            } else {
+                System.out.println("不包含: " + object);
+            }
+        }
+
+        System.out.println("===================");
+        if (objects.contains(str)) {
+            System.out.println("包含2");
+        } else {
+            System.out.println("不包含2");
+        }
+
+
+        System.out.println("vasCode: " + vasCode);
+        //包含: T恤
+        //===================
+        //不包含2
+        //vasCode: fangweikou
+    }
+
 }

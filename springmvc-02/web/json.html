@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 编写一个JavaScript对象
+        var js = {
+            name: "w",
+            age: 3,
+            sex: "男"
+        };
+
+        //JSON数据交换格式
+        // JavaScript对象转化为JSON对象
+        var json = JSON.stringify(js);
+        console.log("JavaScript -》JSON: " + json);
+        //JavaScript -》JSON: {"name":"w","age":3,"sex":"男"}
+
+
+        console.log("==================")
+
+
+        //将JSON对象转换为JavaScript对象
+        var jsObj = JSON.parse(json);
+        console.log("JSON -》JavaScript: ");
+        console.log(jsObj);
+        // {
+        //     "name": "w",
+        //     "age": 3,
+        //     "sex": "男"
+        // }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
