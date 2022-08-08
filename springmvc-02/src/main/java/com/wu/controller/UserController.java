@@ -4,9 +4,13 @@ import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.pojo.UserNew;
 import com.wu.pojo.User;
-import com.wu.utils.JsonUtils;
+import com.wu.utils.JacksonUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,6 +28,8 @@ import java.util.Date;
 //@RestController = @Controller+@ResponseBody不会走视图解析器，会直接返回一个String
 @Controller
 public class UserController {
+    static Logger logger = Logger.getLogger(UserController.class);
+
     //@RequestMapping(value = "/j1", produces = "application/json;charset=utf-8")//springmvc-servlet.xml里面配置解决乱码
     @RequestMapping(value = "/j1")
     @ResponseBody//它不会走视图解析器，会直接返回一个String
@@ -93,7 +99,7 @@ public class UserController {
     @RequestMapping(value = "/j5")
     @ResponseBody//它不会走视图解析器，会直接返回一个String
     public String json5() throws JsonProcessingException {
-        return JsonUtils.getJson(new Date(), "yyyy-MM-dd HH:mm:ss");//http://localhost:8083/j5   "2022-08-08 11:29:41"
+        return JacksonUtils.getJson(new Date(), "yyyy-MM-dd HH:mm:ss");//http://localhost:8083/j5   "2022-08-08 11:29:41"
     }
 
     @RequestMapping(value = "/j6")
@@ -108,8 +114,20 @@ public class UserController {
         arrayList.add(user2);
         arrayList.add(user3);
         arrayList.add(user4);
+        logger.info("入参" + JacksonUtils.bean2Json(arrayList));//[{"name":"w1","age":3,"sex":"男"},{"name":"w2","age":3,"sex":"男"},{"name":"w3","age":3,"sex":"男"},{"name":"w4","age":3,"sex":"男"}]
         //http://localhost:8083/j6
         return JSON.toJSONString(arrayList);//[{"age":3,"name":"w1","sex":"男"},{"age":3,"name":"w2","sex":"男"},{"age":3,"name":"w3","sex":"男"},{"age":3,"name":"w4","sex":"男"}]
+    }
+
+    @PostMapping("/test")
+    @ResponseBody
+    public User getUser(@RequestBody UserNew userNew) {
+        logger.info("getUser的入参：" + JacksonUtils.bean2Json(userNew));
+        //[com.wu.controller.UserController]-getUser的入参：{"name":"ww","age":2,"sex":"女","id":1}
+        User convert = JacksonUtils.convert(userNew, User.class);
+        logger.info("getUser的出参：" + JacksonUtils.bean2Json(convert));
+        //[com.wu.controller.UserController]-getUser的出参：{"name":"ww","age":2,"sex":"女"}
+        return convert;
     }
 
 }
