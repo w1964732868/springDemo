@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -46,5 +47,28 @@ public class BookController {
         bookService.addBook(books);
         return "redirect:/book/allBook";//重定向
     }
+
+    //跳转到修改书籍页面
+    @RequestMapping("/toUpdatePaper")
+    public String toUpdatePaper(int id,Model model) {
+        Books books = bookService.queryBook(id);
+        model.addAttribute("Qbooks",books);
+        return "updateBook";
+    }
+
+    //修改书籍
+    @RequestMapping("/updateBook")
+    public String updateBook(Books books) {
+        bookService.updateBook(books);
+        return "redirect:/book/allBook";//重定向
+    }
+
+    //删除书籍
+    @RequestMapping("/deleteBook/{bookId}")
+    public String deleteBook(@PathVariable("bookId") int id) {
+        bookService.deleteBook(id);
+        return "redirect:/book/allBook";//重定向
+    }
+
 
 }

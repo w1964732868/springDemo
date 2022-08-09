@@ -13,8 +13,19 @@
     </delete>
 
     <update id="updateBook" parameterType="com.wu.pojo.Books">
-        update ssmbuild.books set bookName=#{bookName}, bookCounts = #{bookName},
-         detail = #{detail} where bookID=#{bookId}
+       update ssmbuild.books
+       <set>
+           <if test="bookName!=null">
+               bookName=#{bookName,jdbcType=VARCHAR},
+           </if>
+           <if test="bookCounts!=null">
+               bookCounts=#{bookCounts,jdbcType=INTEGER},
+           </if>
+           <if test="detail!=null">
+               detail=#{detail,jdbcType=VARCHAR}
+           </if>
+       </set>
+        where bookID=#{bookID,jdbcType=INTEGER}
     </update>
 
     <select id="queryBook" resultType="com.wu.pojo.Books">

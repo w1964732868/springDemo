@@ -1,7 +1,6 @@
 package com.wu.service;
 
 import com.wu.pojo.Books;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public interface BookService {
     //增加
     int addBook(Books books);
     //删除
-    int deleteBook(@Param("bookId")int id);
+    int deleteBook(int id);
     //更新
     int updateBook(Books books);
     //查询
