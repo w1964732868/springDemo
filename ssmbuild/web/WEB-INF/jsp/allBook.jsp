@@ -24,11 +24,17 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-4 column">
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/toAddPaper">新增书籍</a>
+            </div>
+        </div>
+
     </div>
 
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <table class="table table-hover">
+            <table class="table table-hover table-striped">
                 <thead>
                 <tr>书籍标号</tr>
                 <tr>书籍名称</tr>
