@@ -14,12 +14,18 @@ import java.util.List;
 public interface BookService {
     //增加
     int addBook(Books books);
+
     //删除
     int deleteBook(int id);
+
     //更新
     int updateBook(Books books);
+
     //查询
     Books queryBook(int id);
+
     //查全的
     List<Books> queryAllBook();
+
+    Books queryBookByName(String bookName);
 }

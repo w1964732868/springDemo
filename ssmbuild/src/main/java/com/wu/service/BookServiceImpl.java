@@ -12,7 +12,7 @@ import java.util.List;
  * @description
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
     private BookMapper bookMapper;
 
     public void setBookMapper(BookMapper bookMapper) {
@@ -38,4 +38,9 @@ public class BookServiceImpl implements BookService{
     public List<Books> queryAllBook() {
         return bookMapper.queryAllBook();
     }
+
+    public Books queryBookByName(String bookName) {
+        return bookMapper.queryBookByName(bookName);
+    }
+
 }
