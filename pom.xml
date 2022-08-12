@@ -28,6 +28,8 @@
         <module>springmvc-01</module>
         <module>springmvc-02</module>
         <module>ssmbuild</module>
+        <module>springmvc-ajax</module>
+        <module>springmvc-Interceptor</module>
     </modules>
     <dependencies>
         <!--        为了spring模块用-->
