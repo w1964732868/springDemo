@@ -21,13 +21,13 @@ public class MyInterceptor implements HandlerInterceptor {
         System.out.println("=======1====处理前==============");
         //http://localhost:8088/t1
 
-        //return true;
+        return true;
         //=======1====处理前==============
+        //1111111
         //=======2====处理后==============
         //=======3====清理==============
 
-        //1111111
-        return false;//=======1====处理前==============
+        //return false;//=======1====处理前==============
     }
 
     //拦截日志

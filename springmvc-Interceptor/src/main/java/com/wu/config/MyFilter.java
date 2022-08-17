@@ -11,7 +11,7 @@ import java.io.IOException;
  * @description
  * @copyright COPYRIGHT © 2014 - 2022 VOYAGE ONE GROUP INC. ALL RIGHTS RESERVED.
  **/
-public class MyFilter implements Filter {
+public class MyFilter implements Filter {//javax.servlet.*
 
 
     public void init(FilterConfig filterConfig) throws ServletException {
