@@ -22,6 +22,7 @@
         <module name="spring-08-proxy" />
         <module name="springmvc-01" />
         <module name="spring-03-ioc-constructor" />
+        <module name="springmvc-file" />
         <module name="springmvc-02" />
         <module name="spring-10-mybatis" />
         <module name="spring-09-aop" />
@@ -55,6 +56,7 @@
       <module name="springmvc-02" options="" />
       <module name="springmvc-Interceptor" options="" />
       <module name="springmvc-ajax" options="" />
+      <module name="springmvc-file" options="" />
       <module name="ssmbuild" options="" />
     </option>
   </component>

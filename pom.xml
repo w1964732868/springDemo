@@ -30,6 +30,7 @@
         <module>ssmbuild</module>
         <module>springmvc-ajax</module>
         <module>springmvc-Interceptor</module>
+        <module>springmvc-file</module>
     </modules>
     <dependencies>
         <!--        为了spring模块用-->
