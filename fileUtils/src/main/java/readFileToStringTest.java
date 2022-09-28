@@ -29,8 +29,13 @@ public class readFileToStringTest {
         List<Map<String, Object>> orderList = new ObjectMapper().readValue(fileToString,
                 new ObjectMapper().getTypeFactory().constructParametricType(List.class, new Class[]{Map.class}));
 
-        //Lists.partition com.google.common
-        List<List<Map<String, Object>>> orderPartList = Lists.partition(orderList, 100);
+
+        long count = orderList.size();//总数 65
+        long sum = 0, lastSum = 0;
+
+
+        //Lists.partition com.google.common  65 10个一组 7组 （10 10 10 10 10 10 5）
+        List<List<Map<String, Object>>> orderPartList = Lists.partition(orderList, 10);
 
 
         for (List<Map<String, Object>> partList : orderPartList) {
@@ -42,7 +47,12 @@ public class readFileToStringTest {
                 idFeildsPairs.add(Pair.of(orderId, Collections.singletonMap("shippedAmount", shippedAmount)));
             }
 
+
+            lastSum += partList.size();//（10 10 10 10 10 10 5）
+            System.out.println("总共{" + count + "}条数据,开始处理{" + sum + "}~{" + lastSum + "}条！");
+
             System.out.println(idFeildsPairs);
+            sum = lastSum;
         }
 
 
