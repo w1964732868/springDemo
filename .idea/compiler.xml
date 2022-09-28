@@ -17,6 +17,7 @@
         <module name="springmvc-Interceptor" />
         <module name="spring-11-transaction" />
         <module name="springmvc-ajax" />
+        <module name="fileUtils" />
         <module name="spring-02-hello" />
         <module name="ssmbuild" />
         <module name="spring-08-proxy" />
@@ -36,6 +37,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding utf-8" />
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="fileUtils" options="" />
       <module name="mybatis-01" options="" />
       <module name="mybatis-02" options="" />
       <module name="mybatis-03" options="" />
